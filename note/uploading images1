@@ -1,0 +1,45 @@
+handling  form data vs json data
+2 npm packages for images /multipart data   ---loadash,formidable
+
+//form creation
+    //form object
+    let form =new formidable.IncomingForm();
+    //form extension either jpg,pdf etc
+    form.keepExtensions=true;
+
+    //parse the form --3 objects
+    form.parse(req,(err,fields,file)=>{
+        if(err){
+            return res.status(400).json({
+                error:"problem with image"
+            })
+        }
+
+        //fields ,,product created thru the passed in fields
+        let product=new Product(fields);
+
+        //handle file here
+        //1.size of image
+        if(file.photo.size>3000000){
+            return res.status(400).json({
+                error:"file size too big"
+            })
+        }
+        //else mention the path of the file ,i.e the properties of photo field in Product
+        product.photo.data =fs.readFileSync(file.photo.path)
+        product.photo.contentType=file.photo.type
+
+        //save the product to DB
+        product.save((err,product)=>{
+            if(err){
+                res.status(400).json({
+                    error:"Saving t-shirt in db failed"
+                })
+            }
+            res.json(product);
+        })
+
+
+    })
+
+}

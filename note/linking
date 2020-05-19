@@ -1,0 +1,16 @@
+using populate for linking models
+ i.e. joining table 
+ or reference documents in other collections
+
+ Syntax --
+ populate(which_model/object_u_want_to_update ,fields_u_want_to_bring_in(specify fields without comma ))
+
+ jis model se populate krna h wo inside
+ jis k ander krna h outside
+
+ eg--.populate("products.product","name price")
+
+
+Route when one  model is based on the other model----
+
+ 

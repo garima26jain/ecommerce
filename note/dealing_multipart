@@ -1,0 +1,30 @@
+more effective
+    using s3 bucket
+     i.e. a folder  on the local machine & just store the path & whenever u need the image
+     just serve the path
+This approach is common for all mp3 ,videos ,firebase 
+
+when we use get request ,mp3 ,photos are not directly served as they are bulky to get from the db
+so just hide it by 
+            declaring it undefined.
+
+sort([["queryString",orderofsorting(asc,desc)]])
+eg=  Product.find().sort([['updatedAt','desc']])
+
+
+updation of more than 1 in mongoose---like stock & sold habe to be updated
+    method--model.bulkWrite()
+        3 parameters-ops(operation that has to be performed)--like insertOne,deleteOne,insertMany,UpdateOne etc,
+                     options--query etc
+                     callback
+
+        to use options ,,we find to find it first,,,thru filter{key:value}
+                                                         then options
+
+
+Enums --to restrict choices
+
+i.e. only a few options are available.
+
+eg-status of booking-booking state,confirmed state, shippping ,cancelled state 
+

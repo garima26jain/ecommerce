@@ -1,0 +1,102 @@
+index.js is the main file which perform rendering.
+
+Routes r defined for every component.
+
+
+how to import styles 
+    1. if cdn is to be used --add the path of css from bootstrap
+    2.if custom css class--import simply
+
+core -->Base-->Home was modified according to it then 
+import in Routes
+menu boilerplate
+
+user-->signup signin basic components 
+import in Routes
+
+work on form structure for signup and signin
+
+offset--move by that mentioned size to right
+
+Fixing footer at bottom 
+    modify styles.css
+
+talking to the backend 
+    sending data and checking if user can be signedup,signed in or authenticated ---in auth/helper/index.js
+
+Signup 
+3 things to focus on--
+    1.where to store data before sending it to backend ==state
+    2.when user types --handleChanges
+    3.when hit submit ,get response
+
+we did changes in user/signup.js
+
+Similarly in signin.js
+
+Conditional Rendering
+Signout only visible when user is authenticated and signed in.
+    So see the menu.js signout part
+        see the style of writing the signout method  & onClick method provides a callback.
+        instead of directly calling a method for signout we used this so that we can redirect
+
+Restriction on Routes
+
+    Private Routes
+    //children means rendering multiple components 
+// but here we are rendering just 1 component
+const PrivateRoute = ({children, ...rest})=>{
+    return(
+        <Route
+        {...rest}
+        render={({location})    =>
+        fakeAuth.isAuthenticated ?(
+            children
+         ):(
+            <Redirect
+                to={{
+                    pathname:"/login",
+                    state:{from:location}
+                }}
+            /> 
+         )
+        }
+        />
+    )
+}
+
+
+we made private route for Admin and User.
+
+then made the base for profile,user & admin dashboard
+
+then import it in routes then in signin modified the navbar redirect to specified component.
+
+then display of admin dashboard & user dashboard based on logic in menubar.
+
+
+Admin dashboard--left &  right side
+now admin dashboard
+    giving him the max /all routes or functionality created in backend.
+
+Design an admin panel
+    Create category-->create a component for AddCategory ,include it in routes 
+                        have the path from admindashboard.
+
+        Adding UI and making backend ready to talk
+        1.UI --created a form to add category and used state to store data.
+            & extracted user and token from isAuthenticated method 
+            as token would be required to pass from the frontend to backend 
+
+        2. go into admin-->helper-->adminapicalls
+            refer reactconcept making a mathod to talk to backend
+            
+        3. in addcategory.js --method created to handle change and  onsubmit 
+                                call that method which fetches the api defined in the helper file.
+    
+    Product 
+        1. crud calls -defining the methods to fetch api in helper/admin.js
+        2. created a product front end using a form that deals with photo
+        3. preload --for categories in product & form should be initialized so that formdata as an object  can be send to backend.
+                     & categories should be available as soon as the form loads, 
+                    so useeffect  with an empty array was declared .

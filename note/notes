@@ -1,0 +1,19 @@
+models--for db
+routes--
+controller--for working
+
+if some value that is fetched from the db doesn't need to be displayed on the front end then 
+    set it to undefined.
+
+as in controllers user.js   ---salt & encrypassword are sensitive info so it need to be displayed 
+    so we can do it by
+    
+    req.profile.salt=undefined;
+    req.profile.encry_password=req.profile;
+
+
+Flow
+
+define the routes,call the controller in routes,export the routes
+in the controllers define the function & middlewares .
+in app.js call the routes file & then use it app.use

@@ -1,0 +1,117 @@
+creating api thru backend
+handing everything from backend & render thru html
+    templating engine like Pug,EJS 
+
+JSON object ---key value pairs inside an object 
+
+saving a object to database 
+    make an object & save it 
+    the save take 2 methods(err ,object_created)=>{
+        if(err){
+
+        }
+        res.json({
+            fields
+        })
+    }
+
+eg--const user=new User(req.body);
+    user.save((err,user)=>{
+        if(err){
+            return res.status(400).json({
+                err:"Not able to save user in DB"
+            })
+        }
+        res.json({
+            name:user.name,
+            email:user.email,
+            id:user._id
+        })
+    })
+
+    
+
+
+
+filename in routes should be same have same name in controller.
+
+in controller ,callbacks are defined. 
+    res r generally send in json format
+export the method from the controller in route
+    eg-[in controller]
+exports.signout=(req,res)=>{
+    res.json({
+        message:"User signout"
+        or return fields defined in schema
+    })
+});
+
+eg-[in routes]
+const {signout,signup}=require("../ controllers/authentication")
+
+router.post("/signup",signup);//signup is middleware
+
+router.get("/signout",signout);//signout is middleware
+
+
+Some common functions used are
+     req.body--u can fireup anything via the post request and req.body has access to it.
+
+//while importing use the same name as used while exporting
+
+to restrict some type of input
+    use express validator
+
+validations can be used on routes itself, after path is defined
+validations is an array 
+
+check is used in routes, after path is defined
+
+eg-
+
+const {check,validationResult}=require('express-validator');
+[
+    check("name").isLength({min:5}).withMessage('must be at least 5 charcters long'),
+    check("email").isEmail().withMessage('email is required'),
+    check("password").isLength({min:5}).withMessage('must be at least 5 charcters long'),
+    
+
+]
+
+whereas validationResult will be used in controllers
+validationResult are binded with req
+
+
+bearer -who holds something
+
+//signout is a simple route which just clears up the token from client browser
+
+putting restrictions on route
+    isSigned = logged in
+    isAuthenticated =authenticated to access his own account
+
+    3 routes--
+    1.user see without login
+    2.routes after login
+    3.authenticated route--changes made only by the owner
+
+//Update
+want to update the fields then we store them in a temporary variable {$set} 
+
+params
+
+Case1:when single parameter is passed
+
+In URL it is after /:param_name
+
+
+//getUserById --method, userId--param
+router.param('userId',getUserById);
+
+
+How we follow
+//passing the middleware optional
+router.get("/user/:userId",isSignedIn, isAuthenticated ,getUser);
+
+Case2:when multiple params are passed
+router.get("/category/:categoryId/:userId",isSignedIn,isAuthenticated,isAdmin,updateCategory)

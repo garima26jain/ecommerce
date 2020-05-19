@@ -1,0 +1,71 @@
+1.create a schema
+
+var schema_Name= new mongoose.Schema({
+    user defined fields
+},system defined fields)
+
+
+Now we need to create a schema, and a model for that schema. 
+We do this by creating a new mongoose schema and defining the parameters.
+ Once we have a schema we assign a mongoose model to that schema.
+
+
+how to decide if schema should be defined or not
+    we have product schema  and order schema 
+    but the product schema is generally defined for one prodct  & 
+    if the customers purchases more than 1 quantity then that needs to be specified as well,
+    originally they r associated with the schema product
+         so this requires a new Schema say ProductCartSchema
+    
+//exporting multiple schema
+const Order=mongoose.model("Order",OrderSchema);
+const ProductCart=mongoose.model("ProductCart",Product);
+
+module.exports={Order,ProductCart};
+
+defining multiple schema in a single field
+--not a good idea though 
+
+here order --- user schema,category schema,productschema,order schema
+2.export it using 
+    module.exports=mongoose.model("name",createdSchema)
+3.virtual -fields that are created on go or computed from the information given by user
+4.{timestamps:true}---means that whenever new insertion is done ,it records the exact time and stores in db
+---it can also be useful for filtering on the basis of creation time 
+
+
+one schema linked with another schema-->populate method is used
+
+eg- product  have some cateogory i.e.apparel have summer,winter ,classic category etc.
+i.e. here product schema is linked with category schema 
+
+    for this we have populate method
+
+
+child Schema 
+Parent Schema:which is coming from other schema
+    for this, use destructuring in the schema 
+       eg-   const {ObjectId}=mongoose.Schema;
+
+    later give reference as one of the property of the field i.e. from where we have to pull 
+        eg-     user:{
+                    type:ObjectId,
+                    ref:"User"
+                }
+
+
+ //storing the photos in database 
+    if photosize is small
+    photo:{
+        data:Buffer,
+        contentType:String
+    }
+
+    if photosize is large then 
+    first store it in a folder somewhere in firebase or amazon cloud and then pull the reference
+
+
+
+whenever db func is called ,then in callback we have 2 things passed as a parameter
+    1.err
+    2.object if it exists

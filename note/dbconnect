@@ -1,0 +1,20 @@
+//whatever is sensitive information like key, info regarding payment gateway
+ //put it inside a seperate file
+ as in case of connection to db ,
+ we moved the DB URL to a file called .env
+
+connect files with db
+
+use mongoose to connect to db
+while creating a server listen to a port and using ``(backticks)
+ then to use any variable defined use ${var_name}
+
+ Here the function run is as follows-
+    myfun.run().then().catch()
+        then is executed if successful
+        catch is executed if failed
+
+process -where all env variables are attached
+
+to call server  don't directly call the PORT instead use
+    process.env.PORT||port_no

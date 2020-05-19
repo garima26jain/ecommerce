@@ -1,0 +1,30 @@
+Talking to backend ,
+ using fetch or axiom 
+    (pass the url u want to visit and other information required for that route  )
+
+i.e. iss URL ki information fetch krni h 
+    after this ,
+    then(if success)  and catch(if failure) block
+
+Fragment
+    just like a div ,not exactly bcoz it doesn't create blocks but keeps in same line. 
+
+React hooks --
+for individual data types --- useState
+for multiple data type --- branch'
+for preloading data ---useEffect
+
+when we use call a function with paramter except string is  passed in it then use callback is necessary.
+for normal function to execute no need of callback
+
+
+Picking up something from the URL say parameter
+    using props---better to destructure
+Way 1
+ so to extract parameter from url
+    use match 
+    
+IN  case of preload in update  , the parameter has to be passed ,for that 
+    so match .param.parameter
+
+

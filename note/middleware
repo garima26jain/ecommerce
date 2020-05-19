@@ -1,0 +1,42 @@
+middleware is the backbone of entire MERNSTACK
+middleware allows us to have multiple functionalities
+
+is a function
+middleware syntax--(req,res,next,param)
+
+in router ---in path : is used ,i.e. param extraction
+
+Some common middleware are--
+Body Handler--parse incoming request bodies in a middleware before ur Handler
+    by req.body property
+handles the values coming from front end.
+
+Cookie-parser---handles the  header and populate req.cookies  ,it helps put or delete some cookies
+
+CORS(Cross origin resource sharing)
+is where u can make request from another domain .like POSTMAN other than front end
+
+
+next() is widely used in middleware definition--passes the control to the next middleware 
+    it is passed as one of the parameter
+
+to use it .use method is used with express 
+while the middleware are passed on routes ,order is important.
+
+router.use(route,middleware,response)
+
+Steps-1.user passing information or not
+    2.if the user exists or not--check via email
+    3.if the password is valid or not
+
+
+how do ensure that user is logged in--jwt
+    use tokens or cookies(old approach) that r stored in the user's browser
+
+    Token-is a long string that is generated based on some parameter & put that token as cookie in  browser
+    that's how we authenticate user is logged in or not
+
+    express jwt itself has next() method so need not to include that while creating middleware
+
+
+    

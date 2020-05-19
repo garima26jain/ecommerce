@@ -1,0 +1,9 @@
+while sending a post request
+ go to headers section,
+    set key as content type 
+        value as application/json if bodyparser.json() is used 
+in body section ,select raw for json ,pass in the required format
+                 if bodyparser.urlEncoded is used the go to form-urlEncoded
+                 for binary files ,images ,pdf majorly form data is used
+
+u can see the data coming in .

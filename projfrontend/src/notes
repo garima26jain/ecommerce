@@ -1,0 +1,31 @@
+include the bootstrap and css cdn and add them in index.html
+
+add the custom css files by simply importing them
+
+Inject backend into frontend enviroment 
+
+    first create the  frontend and then inject backend in the frontend
+
+    read about serverless-stack.com/enviroment in create-react-app
+
+    1.backend should be running so move to that root folder and use
+        npm start
+
+    2.ensure that both front & backend server concurrently.
+    3.create a .env file in frontend
+        for SETTING a enviroment variable in react,
+            predefined SYNTAX--> REACT_APP_anyname=SOME_VALUE
+
+    when we console the above set enviroment variable then we get undefined even after defining 
+        to fix:this environment variable kicks in , u need a restart of server,.
+        we need to call api and make promises then we are able to run the api
+
+    Note---whenever changes are made in enviroment variable ,restart the server
+
+    here we are extracting the commmon part of URL of every request,proxy 
+    that proxy URL is stored in a seperate file and then easily imported.
+
+BASE File- template which loads up in all files eg- nav,header,footer remains same for most of files.
+Inside base we load everything like home,card,component,signup,signin
+
+// the base file wherever is imported can be overridden by children components
